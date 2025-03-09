@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layla meadows🫧 (@Laylameadows) • Instagram photos and videos</title>
+    <link rel="shortcut icon" href="instaicon.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        .nav{
+            position: fixed;
+        }
+        .subnav a{
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+        }
+        .vertical-line {
+            border-left: 0.5px solid rgb(50, 50, 50);
+            height: 584px;
+            margin-left: 245px;
+            position: absolute;
+            top: 0;
+        }
+        .icon img{
+            margin-top: 26.5px;
+            margin-left: 8.5px;
+            margin-bottom: 8.5px;
+        }
+        .subnav ul{
+            display: grid;
+            grid-template-columns: 245px;
+            grid-template-rows:  53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-left: 300px;
+
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-pic img {
+            margin-top: 7.5px;
+            margin-left: 15px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info{
+            margin-left: 80px;
+        }
+
+        .profile-info h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .username {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        button:hover {
+            background-color: #007bb5;
+        }
+
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            margin-bottom: 40px;
+        }
+
+
+        .stat p {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .stat span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+            margin-left: 15px ;
+        }
+
+        .story-item {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .story-item img {
+            width: 88%;
+            height: 88%;
+            /* object-fit: cover; */
+            border-radius: 50%;
+            border: 3px solid #0095f6;
+            cursor: pointer;
+        }
+
+        /* .story-item:hover::after {
+            content: 'View Story';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        } */
+
+        .storyitem1 , .storyitem2 , .storyitem3 , .storyitem4{
+            background-color: black; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; display: none;
+        }
+
+        #storyitem1 , #storyitem2 , #storyitem3 , #storyitem4{
+            display: none;
+        }
+
+        #storyitem1 , #storyitem2 , #storyitem3 , #storyitem4{
+            width: 30%;
+            height: 95%;
+            background-color: black;
+            border-radius: 5px;
+            position: fixed;
+            top: 2.5%;
+            left: 35%;
+            z-index: 4;
+        }
+
+
+        /* @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-info h1 {
+                text-align: center;
+            }
+        } */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img:hover{
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="icon">
+            <a href="ighome.html"><img src="instag.jpg" alt="" width="135.5px" height="53.5px"></a>
+        </div>
+        <div class="subnav">
+            <ul type="none">
+                <li><a href="ighome.html">
+                    <img src="homeicon2.jpg" alt="" width="40px" height="39px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -48px; left: 25px;">Home</p></a></li>
+                <li><a href="">
+                    <img src="searchicon.jpg" alt="" width="38px" height="36px" style="position: relative; top:0px ; left: -26px;">
+                    <p style="position: relative; top: -45px; left: 25px;">Search</p></a></li>
+                <li><a href="igexplore.html">
+                    <img src="exploreicon.jpg" alt="" width="40px" height="33px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -45px; left: 25px;">Explore</p></a></li>
+                <li><a href="">
+                    <img src="reelicon.jpg" alt="" width="40px" height="39px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -48px; left: 25px;">Reels</p></a></li>
+                <li><a href="igmessage.html">
+                    <img src="messageicon.jpg" alt="" width="40px" height="39px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -48px; left: 25px;">Messages</p></a></li>
+                <li><a href="">
+                    <img src="notiicon.jpg" alt="" width="40px" height="36px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -45px; left: 25px;">Notifications</p></a></li>
+                <li><a href="">
+                    <img src="createicon.jpg" alt="" width="40px" height="39px" style="position: relative; top:0px ; left: -28px;">
+                    <p style="position: relative; top: -48px; left: 25px;">Create</p></a></li>
+                <li><a href="igprofile.html">
+                    <img src="profileicon.jpg" alt="" width="28px" height="28px" style="position: relative; top:0px ; left: -22px; border: 2px solid white; border-radius: 15px;">
+                    <p style="position: relative; top: -44px; left: 25px;"><b>Profile</b></p></a></li>
+                <li><a href="">
+                    <img src="moreicon.jpg" alt="" width="28px" height="26px" style="position: relative; top:-3px ; left: -22px;">
+                    <p style="position: relative; top: -44px; left: 25px;">More</p></a></li>
+            </ul>
+        </div>
+        <div class="vertical-line"></div>
+    </div>
+
+
+    <div class="container">
+        <header>
+            <div class="profile-header">
+                <div class="profile-pic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv_3y-EFTOV-8xZev3GrfhsKw-cM3pTqM_uk82F-HRuMISVQDjSID5ABjuahlxvPx6kIQ&usqp=CAU">
+                </div>
+                <div class="profile-info">
+                    <h1>Layla meadows🫧</h1>
+                    <p class="username">@Laylameadows</p><br>
+                    <p class="bio">11:11🎧✧| What if we rewrite the stars?~</p><br>
+                    <button id="follow-btn">Follow</button>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="story-item">
+                <img src="https://i.pinimg.com/736x/94/d0/54/94d0545976f58e4681b717657f558263.jpg" alt="Story 1" onclick="st1()">
+            </div>
+            <div class="story-item">
+                <img src="https://i.pinimg.com/736x/9b/90/8b/9b908b4426d0de5136f206db48ee3b0d.jpg" alt="Story 2" onclick="st2()">
+            </div>
+            <div class="story-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJZaAV6ocKbnTH7R3lu7ITv5wW_sWvEmolLoNTO2gnju5rUmcTu5C2w-qKUZSe2OMnjuU&usqp=CAU=" alt="Story 3" onclick="st3()">
+            </div>
+            <div class="story-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSklp_NJ5bUI1hqXVHa46y87msxtkkxEiWe7dKv28bl067hd5yHP8ylDStuLaWtBy-mzN8&usqp=CAUA" alt="Story 4" onclick="st4()">
+            </div>
+            <div class="story-item">
+                <img src="+icon.jpg" alt="Story 0" style="border: 3px solid rgb(50, 50, 50);">
+            </div>
+        </section>
+
+        <section class="storysection">
+            <div class="storyitem">
+                <div class="storyitem1" onclick="str1()">
+                    <img src="instag.jpg" alt="" width="135.5px" height="53.5px" style="cursor: pointer;">
+                    <img src="crossicon.jpg" alt="" width="25px" height="25px" style="position: absolute; right: 25px; z-index: 3; top: 20px; cursor: pointer;"></div>
+                <img src="https://i.pinimg.com/736x/94/d0/54/94d0545976f58e4681b717657f558263.jpg" alt="Story 1" id="storyitem1" onclick="str1()">
+            </div>
+            <div class="storyitem">
+                <div class="storyitem2" onclick="str2()">
+                    <img src="instag.jpg" alt="" width="135.5px" height="53.5px">
+                    <img src="crossicon.jpg" alt="" width="25px" height="25px" style="position: absolute; right: 25px; z-index: 3; top: 20px;"></div>
+                <img src="https://i.pinimg.com/736x/9b/90/8b/9b908b4426d0de5136f206db48ee3b0d.jpg" alt="Story 2" id="storyitem2" onclick="str2()">
+            </div>
+            <div class="storyitem">
+                <div class="storyitem3" onclick="str3()">
+                    <img src="instag.jpg" alt="" width="135.5px" height="53.5px">
+                    <img src="crossicon.jpg" alt="" width="25px" height="25px" style="position: absolute; right: 25px; z-index: 3; top: 20px;"></div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJZaAV6ocKbnTH7R3lu7ITv5wW_sWvEmolLoNTO2gnju5rUmcTu5C2w-qKUZSe2OMnjuU&usqp=CAU=" alt="Story 3" id="storyitem3" onclick="str3()">
+            </div>
+            <div class="storyitem">
+                <div class="storyitem4" onclick="str4()">
+                    <img src="instag.jpg" alt="" width="135.5px" height="53.5px">
+                    <img src="crossicon.jpg" alt="" width="25px" height="25px" style="position: absolute; right: 25px; z-index: 3; top: 20px;"></div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSklp_NJ5bUI1hqXVHa46y87msxtkkxEiWe7dKv28bl067hd5yHP8ylDStuLaWtBy-mzN8&usqp=CAUA" alt="Story 4" id="storyitem4" onclick="str4()">
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat">
+                <p>Posts</p><br>
+                <span>6</span>
+            </div>
+            <div class="stat">
+                <p>Followers</p><br>
+                <span>480</span>
+            </div>
+            <div class="stat">
+                <p>Following</p><br>
+                <span>423</span>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/94/d0/54/94d0545976f58e4681b717657f558263.jpg" alt="Post 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJZaAV6ocKbnTH7R3lu7ITv5wW_sWvEmolLoNTO2gnju5rUmcTu5C2w-qKUZSe2OMnjuU&usqp=CAU=" alt="Post 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSklp_NJ5bUI1hqXVHa46y87msxtkkxEiWe7dKv28bl067hd5yHP8ylDStuLaWtBy-mzN8&usqp=CAUA" alt="Post 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/53/9e/48/539e48c39fcabdb5b89dbc407348dd10.jpg" alt="Post 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/3f/1d/fb/3f1dfbf2157ec3f5486780a3f1ec6885.jpg" alt="Post 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/236x/c8/c1/70/c8c170bfc611c383450c79897890e676.jpg" alt="Post 6">
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const followButton = document.getElementById('follow-btn');
+
+        followButton.addEventListener('click', function() {
+            if (followButton.textContent === 'Follow') {
+                followButton.textContent = 'Following';
+                followButton.style.backgroundColor = '#32b700';
+            } else {
+                followButton.textContent = 'Follow';
+                followButton.style.backgroundColor = '#0095f6'; 
+            }
+        });
+
+        // Highlights
+        function st1(){
+            document.getElementById("storyitem1").style.display = "block"
+            document.querySelector(".storyitem1").style.display = "block"
+        }
+        function str1(){
+            document.getElementById("storyitem1").style.display = "none"
+            document.querySelector(".storyitem1").style.display = "none"
+        }
+        function st2(){
+            document.getElementById("storyitem2").style.display = "block"
+            document.querySelector(".storyitem2").style.display = "block"
+        }
+        function str2(){
+            document.getElementById("storyitem2").style.display = "none"
+            document.querySelector(".storyitem2").style.display = "none"
+        }
+        function st3(){
+            document.getElementById("storyitem3").style.display = "block"
+            document.querySelector(".storyitem3").style.display = "block"
+        }
+        function str3(){
+            document.getElementById("storyitem3").style.display = "none"
+            document.querySelector(".storyitem3").style.display = "none"
+        }
+        function st4(){
+            document.getElementById("storyitem4").style.display = "block"
+            document.querySelector(".storyitem4").style.display = "block"
+        }
+        function str4(){
+            document.getElementById("storyitem4").style.display = "none"
+            document.querySelector(".storyitem4").style.display = "none"
+        }
+    </script>
+
+</body>
+
+</html>

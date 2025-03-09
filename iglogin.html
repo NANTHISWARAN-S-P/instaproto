@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in • Instagram</title>
+    <link rel="shortcut icon" href="instaicon.jpg" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: small;
+        }
+
+        .main {
+            border: 1px solid rgb(69, 69, 69);
+            margin-top: 15px;
+            width: 375px;
+            margin-left: 34%;
+        }
+        input{
+            background-color: rgb(28, 27, 27);
+            border: 1px solid rgb(69, 69, 69);
+            color: white;
+            height: 27px;
+            width: 290px;
+        }
+        input:focus{
+            outline: none;
+        }
+        input::placeholder{
+            color: gray;
+        }
+        .login-button{
+            background-color: rgb(55, 136, 249);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            height: 27px;
+            width: 300px;
+            margin-bottom: 12px;
+            margin-top: 15px;
+        }
+        #facebook{
+            color: rgb(55, 136, 249); 
+            text-decoration: none;
+        }
+        #facebook:hover{
+            color: white;
+        }
+        .submain{
+            border: 1px solid rgb(69, 69, 69);
+            margin-top: 15px;
+            width: 375px;
+            margin-left: 34%;
+            margin-bottom: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #sii{
+            color: rgb(55, 136, 249); 
+            text-decoration: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <center>
+            <p><img src="instag.jpg" alt="" width="250px" height="100"></p>
+            <p><input type="text" placeholder="Username" required id="n"></p>
+            <p><input type="password" placeholder="Password" required id="p"></p>
+            <p><a href="" id="l" style="color: white;"><button type="submit" class="login-button">Log In</button></a></p>
+            <span>OR</span><br><br>
+        <a href="https://www.facebook.com/login.php/" id="facebook"><p style="margin-bottom: 25px; width: 200px;"><img src="facebookicon.jpg" alt="" width="25px" height="25px" style="position: relative; top: 7px;"> Log in with Facebook</p></a>
+        <p style="margin-bottom: 25px;">Forgotten your password?</p>
+        </center>
+    </div>
+    <div class="submain">
+        <center>
+        <p>Don’t have an account? <a href="" id="sii">Sign up</a></p>
+        </center>
+    </div>
+    <center>
+        <p style="position: relative; right: 5px;">Get the app.</p>
+        <p style="position: relative; right: 5px; top: 2px;"><img src="playicon.jpg" alt="" style="width: 145px; height: 52px; position: relative; top: 2px;"> <img src="microsoft.jpg" alt="" style="width: 115px; height: 48px;"></p>
+    </center>
+
+    <script>
+        var ne = document.getElementById("n")
+        var pe = document.getElementById("p")
+        var loo = document.getElementById("l")
+        addEventListener("click", function(event){
+            event.preventDefault()
+        })
+        loo.addEventListener("click",event=>{
+            if(pe.value == 1201 && ne.value == "Layla meadows"){
+                event.stopImmediatePropagation()
+                loo.href = "ighome.html"
+            }
+            else{
+                ne.value = null
+                pe.value = null
+            }
+            })
+
+    </script>
+
+</body>
+
+</html>

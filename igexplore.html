@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="shortcut icon" href="instaicon.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        /* navigation */
+
+        .nav {
+            position: fixed;
+            z-index: 3;
+        }
+
+        .subnav a {
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+
+        }
+
+        .vertical-line {
+            border-left: 0.5px solid rgb(50, 50, 50);
+            height: 584px;
+            margin-left: 245px;
+            position: absolute;
+            top: 0;
+        }
+
+        .icon img {
+            margin-top: 26.5px;
+            margin-left: 8.5px;
+            margin-bottom: 8.5px;
+        }
+
+        .subnav ul {
+            display: grid;
+            grid-template-columns: 245px;
+            grid-template-rows: 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px;
+        }
+
+        /* main */
+
+        .explore {
+            display: grid;
+            grid-template-columns: 314px 314px 314px;
+            grid-template-rows: 310px 310px;
+            grid-auto-rows: 310px;
+            position: absolute;
+            top: 40px;
+            left: 290px;
+            gap: 5px;
+        }
+
+        #explore3 {
+            width: 314px;
+            height: 625px;
+            grid-column: 3/4;
+            grid-row: 1/3;
+        }
+
+        #explore13 {
+            width: 314px;
+            height: 625px;
+            grid-column: 3/4;
+            grid-row: 5/7;
+        }
+
+        #explore6 {
+            width: 314px;
+            height: 625px;
+            grid-column: 1/2;
+            grid-row: 3/5;
+        }
+
+        #explore16 {
+            width: 314px;
+            height: 625px;
+            grid-column: 1/2;
+            grid-row: 7/9;
+        }
+
+        .explore img {
+            width: 314px;
+            height: 310px;
+            border-radius: 1.5px;
+            cursor: pointer;
+        }
+
+        .explore img {
+            position: relative;
+            display: inline-block;
+        }
+
+        .explore img:hover {
+            filter: brightness(65%);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- navigation -->
+
+    <div class="nav">
+        <div class="icon">
+            <a href="ighome.html"><img src="instag.jpg" alt="" width="135.5px" height="53.5px"></a>
+        </div>
+        <div class="subnav">
+            <ul type="none">
+                <li><a href="ighome.html">
+                        <img src="homeicon2.jpg" alt="" width="40px" height="39px"
+                            style="position: relative; top: 0px ; left: -28px;">
+                        <p style="position: relative; top: -48px; left: 25px;">Home</p>
+                    </a></li>
+                <li><a href="">
+                        <img src="searchicon.jpg" alt="" width="38px" height="36px"
+                            style="position: relative; top:0px ; left: -26px;">
+                        <p style="position: relative; top: -45px; left: 25px;">Search</p>
+                    </a></li>
+                <li><a href="igexplore.html">
+                        <img src="exploreicon2.jpg" alt="" width="40px" height="36px"
+                            style="position: relative; top:0px ; left: -28px;">
+                        <p style="position: relative; top: -45px; left: 25px;"><b>Explore</b></p>
+                    </a></li>
+                <li><a href="">
+                        <img src="reelicon.jpg" alt="" width="40px" height="39px"
+                            style="position: relative; top:0px ; left: -28px;">
+                        <p style="position: relative; top: -48px; left: 25px;">Reels</p>
+                    </a></li>
+                <li><a href="igmessage.html"><img src="messageicon.jpg" alt="" width="40px" height="39px"
+                            style="position: relative; top:0px ; left: -28px;">
+                        <p style="position: relative; top: -48px; left: 25px;">Messages</p>
+                    </a></li>
+                <li><a href="">
+                        <img src="notiicon.jpg" alt="" width="40px" height="36px"
+                            style="position: relative; top:0px ; left: -28px;">
+                        <p style="position: relative; top: -45px; left: 25px;">Notifications</p>
+                    </a></li>
+                <li><a href="">
+                        <img src="createicon.jpg" alt="" width="40px" height="39px"
+                            style="position: relative; top:0px ; left: -28px;">
+                        <p style="position: relative; top: -48px; left: 25px;">Create</p>
+                    </a></li>
+                <li><a href="igprofile.html">
+                        <img src="profileicon.jpg" alt="" width="28px" height="28px"
+                            style="position: relative; top:0px ; left: -22px;">
+                        <p style="position: relative; top: -42px; left: 25px;">Profile</p>
+                    </a></li>
+                <li><a href="">
+                        <img src="moreicon.jpg" alt="" width="28px" height="26px"
+                            style="position: relative; top:-3px ; left: -22px;">
+                        <p style="position: relative; top: -44px; left: 25px;">More</p>
+                    </a></li>
+            </ul>
+        </div>
+        <div class="vertical-line"></div>
+    </div>
+
+    <div class="topbar"
+        style="width: 100%; height: 23.5px; position: fixed; top: 0; z-index: 1; background-color: black;"></div>
+
+    <div class="explore">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbFBMWD4QHbhGYavwr3zSFFJeUpllh4gFDpA&s " alt=""
+            id="explore1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHm7x0_fhwqJXd9KZR7qpDNb17NwHksd0S84eaWglwMKgkPd-gz0QsQTj7aFRPoNjQn8&usqp=CAU"
+            alt="" id="explore2">
+
+        <img src="https://i.pinimg.com/736x/9e/b4/58/9eb45894fb30cb54eb700ab8ca255b16.jpg" alt="" id="explore3">
+
+        <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2023/05/18/55ae3d7b-9971-4727-94fe-ef5b1eeceeb2_855e670d.jpg"
+            alt="" id="explore4">
+        <img src="https://variety.com/wp-content/uploads/2023/05/spider-2.jpg" alt="" id="explore5">
+
+        <img src="https://i.pinimg.com/474x/0f/6d/a9/0f6da9b6df2db0a3c2326221ddc38c56.jpg" alt="" id="explore6">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-28tcz37XYo1Zj0qXJ3FYucS8VOe47r_YwrtJVz98fefpgJReV5wsbZCoZWdfpWcbsaw&usqp=CAU"
+            alt="" id="explore7">
+        <img src="https://i.pinimg.com/originals/f4/21/cd/f421cd9afee865e9eb478a0a0d7018af.jpg" alt="" id="explore8">
+        <img src="https://imagedelivery.net/LBWXYQ-XnKSYxbZ-NuYGqQ/59f44612-d12e-4c9a-a2e5-a7d8d594db00/avatarhd" alt=""
+            id="explore9">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzU5M2IxNGQtN2JmMC00YTJhLTlhZjItZDA4ZWIxZjM4YTFiXkEyXkFqcGc@._V1_.jpg"
+            alt="" id="explore10">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxnG4EEARMw8Kqkncw-RHtdjjAIDMMd5U4vg&s" alt=""
+            id="explore11">
+        <img src="https://cdn.images.express.co.uk/img/dynamic/36/590x/1648768_1.jpg" alt="" id="explore12">
+
+        <img src="https://i.pinimg.com/736x/0b/a3/8e/0ba38eced73a698d1ed7bf29d164d8b7.jpg" alt="" id="explore13">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr3qzTG1IWyc2I020eEUFGShzB8xpZR2ttag&s" alt=""
+            id="explore14">
+        <img src="https://w0.peakpx.com/wallpaper/381/541/HD-wallpaper-captain-america-2020-artwork-captain-america-superheroes-artwork-pixiv-thumbnail.jpg"
+            alt="" id="explore15">
+
+        <img src="https://w0.peakpx.com/wallpaper/372/333/HD-wallpaper-snk-final-season-attack-attack-on-titan-kyojin-no-on-shingeki-shingeki-no-kyojin-titan.jpg"
+            alt="" id="explore16">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPtErRbUJ7zjUuvtMVs-l5dofmyXXbaTXGKQ&s" alt=""
+            id="explore17">
+        <img src="https://i.pinimg.com/474x/57/10/d6/5710d698dad3dee012d826e5a0b01141.jpg" alt="" id="explore18">
+        <img src="https://wallpapersmug.com/large/02bf39/attack-on-titan-hd-mikasa-ackerman-art.jpg" alt=""
+            id="explore19">
+        <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/05/AttackOnTitan-ErwinsMistakes-FeatureImage.jpeg"
+            alt="" id="explore20">
+    </div>
+
+
+</body>
+
+</html>

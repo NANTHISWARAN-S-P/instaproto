@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    .nav {
+      position: fixed;
+    }
+
+    .subnav a {
+      text-decoration: none;
+      color: white;
+      position: relative;
+      top: 10px;
+      left: 25px;
+
+    }
+
+    .vertical-line {
+      border-left: 0.5px solid rgb(50, 50, 50);
+      /* Left border creates the vertical line */
+      height: 584px;
+      /* Height of the line */
+      margin-left: 245px;
+      /* Optional spacing */
+      position: fixed;
+      top: 0;
+    }
+
+    .icon img {
+      margin-top: 26.5px;
+      margin-left: 8.5px;
+      margin-bottom: 8.5px;
+    }
+
+    .subnav ul {
+      display: grid;
+      grid-template-columns: 245px;
+      grid-template-rows: 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px 53.5px;
+    } 
+
+
+
+
+
+    .story-container {
+      display: grid;
+      grid-template-columns: 78px 78px 78px 78px 78px 78px 78px 78px 78px;
+      grid-template-rows: 80px;
+      width: 633px;
+      position: absolute;
+      top: 0;
+      left: 246px;
+      margin-top: 12.5px;
+      padding: 10px 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background-color: black;
+    }
+
+    .story {
+      position: relative;
+      margin: 0 10px;
+    }
+
+    .story img {
+      width: 63.5px;
+      height: 63.5px;
+      border-radius: 50%;
+      border: 2px solid #d44848;
+      cursor: pointer;
+    }
+
+    .story img.active {
+      border-color: #3498db;
+    }
+
+    .story-name {
+      text-align: center;
+      font-size: 12px;
+    }
+
+
+
+
+    .main-container {
+      position: relative;
+      top: 140px;
+      width: 600px;
+      height: auto;
+      margin-left: 315px;
+      margin-bottom: 40px;
+    }
+
+    .feed {
+      width: 500px;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .post {
+      padding: 15px;
+      border-bottom: 1px solid #333;
+    }
+
+    .user-info{
+      margin-bottom: 10px;
+    }
+
+    .post img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .post-footer button {
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .post-footer button.liked{
+      color: red;
+    }
+
+
+    .likes-count {
+      font-weight: bold;
+    }
+
+    .comment-section {
+      padding: 10px;
+      border-top: 1px solid #333;
+    }
+
+    .comment-input {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #222;
+      font-size: 14px;
+      color: white;
+    }
+
+    .comment-input::placeholder {
+      color: #888
+    }
+
+    .comments {
+      margin-top: 10px;
+    }
+
+    .comments div {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .comments .username {
+      font-weight: bold;
+    }
+
+
+
+
+
+    .suggestions-container {
+      width: 350px;
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      right: 20px;
+      top: 30px;
+      z-index: 2;
+    }
+
+    .suggestions-container h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .profile:hover {
+      background-color: #333333;
+    }
+
+    .profile img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .profile .info {
+      flex-grow: 1;
+    }
+
+    .follow-btn {
+      background-color: #0095f6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .follow-btn.following {
+      background-color: #565656;
+    }
+
+    .follow-btn:hover {
+      background-color: #0078d4;
+    }
+
+
+    /* Story Modal */
+    .story-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 6;
+    }
+
+    .story-modal img {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .story-modal.active {
+      display: flex;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      border: none;
+      font-size: 24px;
+      color: #e0e0e0;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="nav">
+    <div class="icon">
+      <a href=""><img src="instag.jpg" alt="" width="135.5px" height="53.5px"></a>
+    </div>
+    <div class="subnav">
+      <ul type="none">
+        <li><a href="" style="position: relative; top: 10px; left: 25px;">Home</a></li>
+        <li><a href="">Search</a></li>
+        <li><a href="">Explore</a></li>
+        <li><a href="">Reels</a></li>
+        <li><a href="">Messages</a></li>
+        <li><a href="">Notifications</a></li>
+        <li><a href="">Create</a></li>
+        <li><a href="">Profile</a></li>
+        <li><a href="">More</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vertical-line"></div>
+  </div> -->
+
+  <div class="story-container">
+    <div class="story" onclick="openStory('story1')">
+      <img src="https://i.pinimg.com/736x/dd/88/d9/dd88d9223d05d41e6710441bbfd2a574.jpg" alt="User 1" id="story1">
+      <div class="story-name">Ava</div>
+    </div>
+    <div class="story" onclick="openStory('story2')">
+      <img src="https://i.pinimg.com/736x/df/7c/4e/df7c4e9c3ff0a4d0e978f2cae4836272.jpg" alt="User 2" id="story2">
+      <div class="story-name">Elena</div>
+    </div>
+    <div class="story" onclick="openStory('story3')">
+      <img src="https://assets.mycast.io/actor_images/actor-moritz-hau-1060651_large.jpg?1714313067" alt="User 2"
+        id="story3">
+      <div class="story-name">Ryan</div>
+    </div>
+    <div class="story" onclick="openStory('story4')">
+      <img src="https://i.pinimg.com/236x/57/ce/50/57ce5028b65512e255d25fc96a9e24af.jpg" alt="User 2" id="story4">
+      <div class="story-name">Theo</div>
+    </div>
+    <div class="story" onclick="openStory('story5')">
+      <img src="https://i.pinimg.com/736x/a7/9f/06/a79f068137411088a09a72aec791cc50.jpg" alt="User 2" id="story5">
+      <div class="story-name">Isabella</div>
+    </div>
+    <div class="story" onclick="openStory('story6')">
+      <img src="https://i.pinimg.com/736x/73/fb/96/73fb968bd0857e1c38af29abf3cf8719.jpg" alt="User 2" id="story6">
+      <div class="story-name">Jules</div>
+    </div>
+    <div class="story" onclick="openStory('story7')">
+      <img
+        src="https://www.theodysseyonline.com/media-library/scontent-iad3-1-cdninstagram-com.png?id=18529360&width=980.jpg"
+        alt="User 2" id="story7">
+      <div class="story-name">Lara</div>
+    </div>
+    <div class="story" onclick="openStory('story8')">
+      <img src="https://i.pinimg.com/736x/f8/d3/b5/f8d3b59a835bed0794f67b98fde030d0.jpg" alt="User 2" id="story8">
+      <div class="story-name">Kai</div>
+    </div>
+    <div class="story" onclick="openStory('story9')">
+      <img
+        src="https://m.media-amazon.com/images/M/MV5BMWZiOWE5OGEtYmMzOS00MzRhLThhMjYtM2IyMDFiMmMyMjliXkEyXkFqcGc@.V1_FMjpg_UX1000.jpg"
+        alt="User 2" id="story9">
+      <div class="story-name">IU</div>
+    </div>
+
+  </div>
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Josh Chen</strong>
+        </div>
+        <img src="https://i.pinimg.com/736x/13/f9/b6/13f9b6b19bece65908bd40ca3e8d4999.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">2,410 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Lara jean</strong>
+        </div>
+        <img
+          src="https://ew.com/thmb/hvkPHZ2P7IrXM0iK0Mt18QBR8g0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TATB3_Unit_10957_R-e45a45b4e7ca479291aa8a4d23afc216.jpg"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">1,986 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>honeymoon</strong>
+        </div>
+        <img src="https://thehoya.com/wp-content/uploads/2023/03/3.29.23_LanaDelReyAlbum_Spotify.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">12,564,785 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Stella</strong>
+        </div>
+        <img src="https://i.pinimg.com/originals/8d/c9/4f/8dc94f89ff88551ea65200050fe7103b.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">82,256
+              Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Isebella</strong>
+        </div>
+        <img src="https://i.pinimg.com/originals/da/20/27/da202756ea02139c40b172c5bce9367a.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">1,501Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Noah</strong>
+        </div>
+        <img src="https://pbs.twimg.com/media/Fzq3VuPXgAEMlHZ.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">7,339 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Q</strong>
+        </div>
+        <img
+          src="https://images.summitmedia-digital.com/preview/images/2023/05/21/154854093_3497218167071245_7349329333102332679_n.jpg"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">9,123 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Zendaya</strong>
+        </div>
+        <img
+          src="https://imgix.bustle.com/uploads/getty/2025/1/6/12282a2b/beverly-hills-california-january.jpg?w=414&h=621&fit=crop&crop=focalpoint&dpr=2&fp-x=0.4798&fp-y=0.2483"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">75,896,152 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Zhang Lu Rang</strong>
+        </div>
+        <img
+          src="https://i.ytimg.com/vi/uQbWNz7CKLs/oardefault.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAMcq8LQbHbyWd2kjyvXVnVHuIxsQ"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">75,896,152 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Somin</strong>
+        </div>
+        <img
+          src="https://www.j-14.com/wp-content/uploads/2024/10/somin_jj_1728297751_3473535754092316540_641167366.jpg?fit=800%2C1000&quality=86&strip=all"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">75,896,152 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Minho</strong>
+        </div>
+        <img
+          src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2023/05/18/55ae3d7b-9971-4727-94fe-ef5b1eeceeb2_855e670d.jpg"
+          alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">75,896,152 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="feed">
+      <div class="post">
+        <div class="user-info">
+          <strong>Megan fox</strong>
+        </div>
+        <img src="https://i.pinimg.com/736x/6a/48/cd/6a48cd31c223f845116d35d8683b24bf.jpg" alt="Post Image">
+        <div class="post-footer">
+          <div>
+            <button onclick="toggleLike(this)">❤</button>
+            <span class="likes-count">75,896,152 Likes</span>
+          </div>
+          <button onclick="toggleComments()">💬</button>
+        </div>
+        <div class="comment-section" style="display: none;">
+          <input type="text" class="comment-input" placeholder="Add a comment..." onkeypress="addComment(event)">
+          <div class="comments"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="story-modal" id="story-modal">
+    <img src="" alt="Story Image" id="story-image">
+    <button class="modal-close" onclick="closeStory()">X</button>
+  </div>
+
+  <script>
+    // function toggleLike(button) {
+    //   const likeCount = button.parentElement.querySelector('.likes-count');
+    //   let currentLikes = parseInt(likeCount.innerText.split(' ')[0])
+
+    //   if (!button.classList.contains('liked')) {
+    //     button.classList.add('liked');
+    //     button.style.color = 'red'; // Change color to red
+    //     likeCount.innerText = (currentLikes + 1) + " Likes";
+    //   } else {
+    //     button.classList.remove('liked');
+    //     button.style.color = 'white'; // Change color back to white
+    //     likeCount.innerText = (currentLikes - 1) + " Likes";
+    //   }
+    // }
+
+    function toggleLike(button) {
+      const likeCount = button.parentElement.querySelector('.likes-count');
+      let currentLikes = parseInt(likeCount.innerText.replace(/\D/g, ''), 10) || 0;
+
+      if (button.classList.contains('liked')) {
+        button.classList.remove('liked');
+        likeCount.innerText = `${Math.max(0, currentLikes - 1).toLocaleString()} Likes`;
+      } else {
+        button.classList.add('liked');
+        likeCount.innerText = `${(currentLikes + 1).toLocaleString()} Likes`;
+      }
+    }
+
+
+    function toggleComments() {
+      const commentSection = event.target.closest('.post').querySelector('.comment-section');
+      commentSection.style.display = commentSection.style.display === "none" ? "block" : "none";
+    }
+
+    function addComment(event) {
+      if (event.key === "Enter" && event.target.value.trim() !== "") {
+        const commentText = event.target.value.trim();
+        const commentsDiv = event.target.closest('.comment-section').querySelector('.comments');
+        const commentElement = document.createElement('div');
+        commentElement.innerHTML = `<span class='username'>You:</span> ${commentText}`;
+        commentsDiv.appendChild(commentElement);
+        event.target.value = "";  // Clear input
+      }
+    }
+
+    function openStory(storyId) {
+      const storyModal = document.getElementById('story-modal');
+      const storyImage = document.getElementById('story-image');
+      const storySrc = document.getElementById(storyId).src;
+      storyImage.src = storySrc; // Set the story image source
+      storyModal.classList.add('active');
+    }
+
+    function closeStory() {
+      const storyModal = document.getElementById('story-modal');
+      storyModal.classList.remove('active');
+    }
+  </script>
+
+
+ <!-- suggestions -->
+  <div class="suggestions-container">
+    <h3>Suggested for you</h3>
+    <div id="suggestions-list">
+      <!-- Profiles will be added here dynamically -->
+    </div>
+  </div>
+
+  <script>
+    const suggestedProfiles = [
+      { id: 1, name: "Damon salvatore", username: "Damon_salvatore", img: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848c876c1cd5570350bea297c9" },
+      { id: 2, name: "Emma Watson", username: "emma_watson", img: "https://www.thekeyexecutives.com/wp-content/uploads/2021/08/Emma-Watson.jpg" },
+      { id: 3, name: "Taylor Swift", username: "taylorswift", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlz-0gZGjxoAp2wa6pbtGIR_9nsVwQZMHbOQ&s" },
+      { id: 4, name: "Anne Hathaway", username: "annehathaway", img: "https://media.vogue.co.uk/photos/636d2aad41d61cb9a3386992/2:3/w_2560%2Cc_limit/GettyImages-1243944955.jpg" },
+      { id: 5, name: "Kayden", username: "kay_den", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkOKEFDI7VTGRJmx2HmKRXLlwLCA1T5hFYlw&s" },
+      { id: 6, name: "Olivia Rodrigo", username: "oliviarodrigo", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YiTvbHLfZcnZcFyllNaa7d0U4Jlt84aVVw&s" },
+      { id: 5, name: "Rune Kristiansen", username: "Rune_k", img: "https://assets.vogue.com/photos/645cd9ef8ce475c1df7ded6d/4:3/pass/PA2023_22_0041_RGB.jpg" },
+      { id: 7, name: "Anthony", username: "Anthony", img: "https://publish.purewow.net/wp-content/uploads/sites/2/2024/06/JonathanBailey.jpg?resize=720%2C780" }
+    ];
+    function loadSuggestions() {
+      const suggestionsList = document.getElementById("suggestions-list");
+
+      suggestedProfiles.forEach(profile => {
+        const profileDiv = document.createElement("div");
+        profileDiv.classList.add("profile");
+        profileDiv.innerHTML = `
+            <img src="${profile.img}" alt="${profile.name}">
+            <div class="info">
+                <strong>${profile.name}</strong> <br>
+                <small>@${profile.username}</small>
+            </div>
+            <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+        `;
+        suggestionsList.appendChild(profileDiv);
+      });
+    }
+
+    function toggleFollow(button) {
+      if (button.classList.contains("following")) {
+        button.classList.remove("following");
+        button.innerText = "Follow";
+      } else {
+        button.classList.add("following");
+        button.innerText = "Following";
+      }
+    }
+
+    window.onload = loadSuggestions;
+
+
+
+  </script>
+
+</body>
+
+</html>
